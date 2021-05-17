@@ -164,12 +164,12 @@ class Client(object):
         return ret
 
     def get_block_reward(self, block_number):
-        u""" get block reward by blcok_number
+        u""" get block reward by blcok_number,block_number shoule less than header.block_number
         return coin_reward, author, gas_fee
         """
         operation = {
             u"rpc_method": u"chain.get_block_by_number",
-            u"params": [block_number],
+            u"params": [block_number+1],
         }
         state_root = self.execute(operation).get("header").get("state_root")
         operation = {
